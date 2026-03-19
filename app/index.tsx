@@ -1,78 +1,100 @@
 import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Plane, Search } from 'lucide-react-native';
 import React, { useState } from 'react';
-import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
 
 export default function FlightSearchScreen() {
     const router = useRouter();
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = () => {
-        if (searchQuery.trim()) {
-            router.push(`/download/${searchQuery}`);
-        } else {
-            router.push('/download/AI101');
-        }
+        const query = searchQuery.trim() || 'AI101';
+        router.push(`/download/${query}`);
     };
 
     return (
-        <SafeAreaView className="flex-1 bg-dark">
-            <View className="flex-1 px-6 pt-12 pb-4">
-                <View className="mb-8">
-                    <Text className="text-white text-4xl font-semibold mb-2 tracking-tight">
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0F' }}>
+            <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 48, paddingBottom: 16 }}>
+                {/* Header */}
+                <View style={{ marginBottom: 32 }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 36, fontWeight: '600', marginBottom: 8, lineHeight: 44 }}>
                         Where are{'\n'}you flying?
                     </Text>
-                    <Text className="text-muted text-lg">Search your flight number</Text>
+                    <Text style={{ color: '#8E8E93', fontSize: 18 }}>Search your flight number</Text>
                 </View>
 
-                <View className="mb-10">
-                    <View className="relative flex-row items-center px-5 py-4 rounded-full border border-white/10 bg-white/5">
-                        <Search size={24} color="#4A9EFF" className="mr-3" />
+                {/* Search Bar */}
+                <View style={{ marginBottom: 40 }}>
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        paddingHorizontal: 20,
+                        paddingVertical: 16,
+                        borderRadius: 50,
+                        borderWidth: 1,
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                    }}>
+                        <Search size={22} color="#4A9EFF" style={{ marginRight: 12 }} />
                         <TextInput
                             placeholder="e.g. AI101"
                             placeholderTextColor="#8E8E93"
                             value={searchQuery}
                             onChangeText={setSearchQuery}
                             onSubmitEditing={handleSearch}
-                            className="flex-1 text-white text-lg font-medium"
+                            style={{ flex: 1, color: '#FFFFFF', fontSize: 18, fontWeight: '500' }}
                             autoCapitalize="characters"
                             returnKeyType="search"
                         />
                     </View>
                 </View>
 
-                <View className="flex-1">
-                    <Text className="text-muted text-sm font-medium mb-4 uppercase tracking-wider">
+                {/* Recent Flights */}
+                <View style={{ flex: 1 }}>
+                    <Text style={{ color: '#8E8E93', fontSize: 12, fontWeight: '500', marginBottom: 16, textTransform: 'uppercase', letterSpacing: 1 }}>
                         Recent Flights
                     </Text>
-                    <ScrollView className="space-y-4">
+                    <ScrollView showsVerticalScrollIndicator={false}>
                         <FlightCard
                             flightNum="AI 101"
                             route="DEL → BOM"
                             time="08:45 AM"
                             status="On Time"
-                            statusColor="text-[#00E676]"
+                            statusColor="#00E676"
                             onClick={() => router.push('/download/AI101')}
                         />
-                        <View className="h-4" />
+                        <View style={{ height: 12 }} />
                         <FlightCard
                             flightNum="BA 234"
                             route="LHR → JFK"
                             time="14:20 PM"
                             status="Delayed"
-                            statusColor="text-[#FF9800]"
+                            statusColor="#FF9800"
                             onClick={() => router.push('/download/BA234')}
                         />
                     </ScrollView>
                 </View>
 
-                <View className="mt-auto pt-6">
+                {/* CTA Button */}
+                <View style={{ paddingTop: 24 }}>
                     <TouchableOpacity
                         onPress={handleSearch}
-                        className="w-full bg-primary rounded-full py-4 items-center justify-center"
                         activeOpacity={0.8}
+                        style={{
+                            backgroundColor: '#4A9EFF',
+                            borderRadius: 50,
+                            paddingVertical: 16,
+                            alignItems: 'center',
+                        }}
                     >
-                        <Text className="text-white text-lg font-semibold">Find Flight</Text>
+                        <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '600' }}>Find Flight</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -99,19 +121,35 @@ function FlightCard({
         <TouchableOpacity
             onPress={onClick}
             activeOpacity={0.8}
-            className="w-full rounded-2xl p-4 flex-row items-center bg-white/5 border border-white/10"
+            style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: 16,
+                borderRadius: 16,
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                borderWidth: 1,
+                borderColor: 'rgba(255,255,255,0.1)',
+            }}
         >
-            <View className="w-12 h-12 rounded-full bg-white/10 items-center justify-center mr-4">
-                <Plane size={24} color="#FFF" />
+            <View style={{
+                width: 48,
+                height: 48,
+                borderRadius: 24,
+                backgroundColor: 'rgba(255,255,255,0.1)',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: 16,
+            }}>
+                <Plane size={22} color="#FFFFFF" />
             </View>
-            <View className="flex-1">
-                <Text className="text-white font-semibold text-lg">{flightNum}</Text>
-                <Text className="text-muted text-sm mt-1">{route}</Text>
+            <View style={{ flex: 1 }}>
+                <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 18 }}>{flightNum}</Text>
+                <Text style={{ color: '#8E8E93', fontSize: 14, marginTop: 2 }}>{route}</Text>
             </View>
-            <View className="items-end">
-                <Text className="text-primary font-semibold">{time}</Text>
-                <View className="bg-white/10 px-2 py-1 rounded-full mt-1">
-                    <Text className={`${statusColor} text-xs font-medium`}>{status}</Text>
+            <View style={{ alignItems: 'flex-end' }}>
+                <Text style={{ color: '#4A9EFF', fontWeight: '600' }}>{time}</Text>
+                <View style={{ backgroundColor: 'rgba(255,255,255,0.1)', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 50, marginTop: 4 }}>
+                    <Text style={{ color: statusColor, fontSize: 11, fontWeight: '500' }}>{status}</Text>
                 </View>
             </View>
         </TouchableOpacity>

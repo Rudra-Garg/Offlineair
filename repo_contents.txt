@@ -1,3 +1,2013 @@
+Repository: .
+Total files processed: 129
+================================================================================
+
+
+Filename: .gitignore
+Content:
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
+
+app-example
+
+# generated native folders
+/ios
+/android
+
+
+================================================================================
+
+Filename: .vscode/extensions.json
+Content:
+{ "recommendations": ["expo.vscode-expo-tools"] }
+
+
+================================================================================
+
+Filename: .vscode/settings.json
+Content:
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sortMembers": "explicit"
+  }
+}
+
+
+================================================================================
+
+Filename: ATTRIBUTIONS.md
+Content:
+This Figma Make file includes components from [shadcn/ui](https://ui.shadcn.com/) used under [MIT license](https://github.com/shadcn-ui/ui/blob/main/LICENSE.md).
+
+This Figma Make file includes photos from [Unsplash](https://unsplash.com) used under [license](https://unsplash.com/license).
+
+
+================================================================================
+
+Filename: README.md
+Content:
+# Welcome to your Expo app 👋
+
+This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
+## Get started
+
+1. Install dependencies
+
+   ```bash
+   npm install
+   ```
+
+2. Start the app
+
+   ```bash
+   npx expo start
+   ```
+
+In the output, you'll find options to open the app in a
+
+- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+
+You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Get a fresh project
+
+When you're ready, run:
+
+```bash
+npm run reset-project
+```
+
+This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+
+## Learn more
+
+To learn more about developing your project with Expo, look at the following resources:
+
+- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+
+## Join the community
+
+Join our community of developers creating universal apps.
+
+- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
+- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+
+================================================================================
+
+Filename: app.json
+Content:
+{
+  "expo": {
+    "name": "expo-mobile",
+    "slug": "expo-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "expomobile",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
+
+
+================================================================================
+
+Filename: app/_layout.tsx
+Content:
+import { DarkTheme, ThemeProvider } from '@react-navigation/native';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import 'react-native-reanimated';
+import '../global.css';
+import { DatabaseProvider } from '../db/DatabaseProvider';
+
+export default function RootLayout() {
+  return (
+    <DatabaseProvider>
+      <ThemeProvider value={DarkTheme}>
+        <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#0A0A0F' } }}>
+          <Stack.Screen name="index" />
+          <Stack.Screen name="download/[flightId]" />
+          <Stack.Screen name="live-map/[flightId]" />
+          <Stack.Screen name="complete/[flightId]" />
+          <Stack.Screen name="comparison/[flightId]" />
+          <Stack.Screen name="accuracy/[flightId]" />
+        </Stack>
+        <StatusBar style="light" />
+      </ThemeProvider>
+    </DatabaseProvider>
+  );
+}
+
+================================================================================
+
+Filename: app/accuracy/[flightId].tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\app/accuracy/[flightId].tsx'
+
+
+Filename: app/comparison/ComparisonScreen.native.tsx
+Error reading file: [WinError 2] The system cannot find the file specified: '.\\app/comparison/ComparisonScreen.native.tsx'
+
+
+Filename: app/comparison/ComparisonScreen.tsx
+Error reading file: [WinError 2] The system cannot find the file specified: '.\\app/comparison/ComparisonScreen.tsx'
+
+
+Filename: app/comparison/ComparisonScreen.web.tsx
+Error reading file: [WinError 2] The system cannot find the file specified: '.\\app/comparison/ComparisonScreen.web.tsx'
+
+
+Filename: app/comparison/[flightId].tsx
+Content:
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { ArrowLeft, ChevronRight } from 'lucide-react-native';
+import React, { useState } from 'react';
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+export default function ComparisonScreen() {
+    const router = useRouter();
+    const { flightId } = useLocalSearchParams();
+    const displayId = Array.isArray(flightId) ? flightId[0] : (flightId || 'AI101');
+    const [activeTab, setActiveTab] = useState('Both');
+
+    return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0F' }}>
+
+            {/* ── MAP AREA ── */}
+            <View style={{ height: 300, backgroundColor: '#080D18' }}>
+
+                {/* Subtle grid */}
+                {[20, 40, 60, 80].map(pct => (
+                    <View key={pct} style={{ position: 'absolute', top: `${pct}%` as any, left: 0, right: 0, height: 1, backgroundColor: 'rgba(255,255,255,0.04)' }} />
+                ))}
+                {[20, 40, 60, 80].map(pct => (
+                    <View key={pct} style={{ position: 'absolute', left: `${pct}%` as any, top: 0, bottom: 0, width: 1, backgroundColor: 'rgba(255,255,255,0.04)' }} />
+                ))}
+
+                {/* Route visualisation */}
+                <View style={{ position: 'absolute', top: 0, bottom: 0, left: 40, right: 40, justifyContent: 'center' }}>
+
+                    {/* Actual route - slightly wavy using segments */}
+                    {(activeTab === 'Actual' || activeTab === 'Both') && (
+                        <>
+                            <View style={{ position: 'absolute', top: '38%', left: 0, right: 0, height: 2.5, backgroundColor: '#00E676', borderRadius: 2, opacity: 0.9 }} />
+                        </>
+                    )}
+
+                    {/* Estimated route */}
+                    {(activeTab === 'Estimated' || activeTab === 'Both') && (
+                        <View style={{ position: 'absolute', top: '48%', left: 0, right: 0, height: 2, backgroundColor: '#4A9EFF', borderRadius: 2, opacity: 0.75 }} />
+                    )}
+
+                    {/* Deviation dots with connecting lines */}
+                    {activeTab === 'Both' && (
+                        <>
+                            {/* DEL start */}
+                            <View style={{ position: 'absolute', top: '35%', left: -8, width: 14, height: 14, borderRadius: 7, backgroundColor: '#4A9EFF', borderWidth: 2, borderColor: '#0A0A0F' }} />
+                            {/* Waypoint 1 - green (< 10km) */}
+                            <View style={{ position: 'absolute', top: '30%', left: '28%', width: 12, height: 12, borderRadius: 6, backgroundColor: '#00E676', borderWidth: 2, borderColor: '#0A0A0F' }} />
+                            <View style={{ position: 'absolute', top: '31%', left: '28.6%', width: 1.5, height: '18%', backgroundColor: 'rgba(0,230,118,0.3)' }} />
+                            {/* Waypoint 2 - orange (10-50km) */}
+                            <View style={{ position: 'absolute', top: '28%', left: '56%', width: 12, height: 12, borderRadius: 6, backgroundColor: '#FF9800', borderWidth: 2, borderColor: '#0A0A0F' }} />
+                            <View style={{ position: 'absolute', top: '29%', left: '56.6%', width: 1.5, height: '20%', backgroundColor: 'rgba(255,152,0,0.3)' }} />
+                            {/* Waypoint 3 - red (> 50km) */}
+                            <View style={{ position: 'absolute', top: '26%', left: '78%', width: 12, height: 12, borderRadius: 6, backgroundColor: '#F44336', borderWidth: 2, borderColor: '#0A0A0F' }} />
+                            <View style={{ position: 'absolute', top: '27%', left: '78.6%', width: 1.5, height: '22%', backgroundColor: 'rgba(244,67,54,0.3)' }} />
+                            {/* BOM end */}
+                            <View style={{ position: 'absolute', top: '35%', right: -8, width: 14, height: 14, borderRadius: 7, backgroundColor: '#00E676', borderWidth: 2, borderColor: '#0A0A0F' }} />
+                        </>
+                    )}
+
+                    {/* Labels */}
+                    <Text style={{ position: 'absolute', bottom: '15%', left: -8, color: '#8E8E93', fontSize: 10, fontWeight: '600' }}>DEL</Text>
+                    <Text style={{ position: 'absolute', bottom: '15%', right: -8, color: '#8E8E93', fontSize: 10, fontWeight: '600' }}>BOM</Text>
+                </View>
+
+                {/* Legend */}
+                <View style={{ position: 'absolute', bottom: 16, alignSelf: 'center', flexDirection: 'row', gap: 20, backgroundColor: 'rgba(0,0,0,0.55)', paddingHorizontal: 20, paddingVertical: 8, borderRadius: 50, borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)' }}>
+                    {activeTab !== 'Actual' && (
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                            <View style={{ width: 18, height: 2, backgroundColor: '#4A9EFF', borderRadius: 1 }} />
+                            <Text style={{ color: '#4A9EFF', fontSize: 11, fontWeight: '500' }}>Estimated</Text>
+                        </View>
+                    )}
+                    {activeTab !== 'Estimated' && (
+                        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+                            <View style={{ width: 18, height: 2, backgroundColor: '#00E676', borderRadius: 1 }} />
+                            <Text style={{ color: '#00E676', fontSize: 11, fontWeight: '500' }}>Actual</Text>
+                        </View>
+                    )}
+                </View>
+
+                {/* Overlaid controls */}
+                <View style={{ position: 'absolute', top: 16, left: 16, right: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <TouchableOpacity onPress={() => router.back()} style={{ width: 36, height: 36, backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: 18, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+                        <ArrowLeft color="#FFF" size={18} />
+                    </TouchableOpacity>
+                    <View style={{ flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.65)', borderRadius: 50, padding: 3, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+                        {['Estimated', 'Actual', 'Both'].map(tab => (
+                            <TouchableOpacity
+                                key={tab}
+                                onPress={() => setActiveTab(tab)}
+                                style={{ paddingHorizontal: 14, paddingVertical: 6, borderRadius: 50, backgroundColor: activeTab === tab ? '#4A9EFF' : 'transparent' }}
+                            >
+                                <Text style={{ color: activeTab === tab ? '#FFFFFF' : '#8E8E93', fontSize: 12, fontWeight: '600' }}>{tab}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </View>
+            </View>
+
+            {/* ── BOTTOM SHEET ── */}
+            <ScrollView style={{ flex: 1, backgroundColor: '#0A0A0F' }} contentContainerStyle={{ paddingHorizontal: 24, paddingBottom: 32 }}>
+                <View style={{ width: 48, height: 5, backgroundColor: 'rgba(255,255,255,0.15)', borderRadius: 3, alignSelf: 'center', marginVertical: 16 }} />
+
+                {/* Title + Score */}
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 20, fontWeight: '700' }}>Flight Comparison</Text>
+                    <View style={{ paddingHorizontal: 14, paddingVertical: 6, borderRadius: 10, backgroundColor: 'rgba(74,158,255,0.15)', borderWidth: 1, borderColor: 'rgba(74,158,255,0.3)' }}>
+                        <Text style={{ color: '#4A9EFF', fontWeight: '700', fontSize: 15 }}>Score: 84</Text>
+                    </View>
+                </View>
+
+                {/* Deviation legend */}
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: 14, padding: 14, marginBottom: 20, borderWidth: 1, borderColor: 'rgba(255,255,255,0.06)' }}>
+                    <LegendItem color="#00E676" label="< 10km" />
+                    <LegendItem color="#FF9800" label="10–50km" />
+                    <LegendItem color="#F44336" label="> 50km" />
+                </View>
+
+                {/* Timeline */}
+                <View style={{ marginBottom: 24 }}>
+                    <View style={{ height: 4, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 2, overflow: 'hidden' }}>
+                        <View style={{ width: '40%', height: '100%', backgroundColor: '#4A9EFF', borderRadius: 2 }} />
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 }}>
+                        <Text style={{ color: '#8E8E93', fontSize: 11 }}>08:45 DEL</Text>
+                        <Text style={{ color: '#8E8E93', fontSize: 11 }}>10:52 BOM</Text>
+                    </View>
+                </View>
+
+                {/* Phase cards */}
+                <View style={{ flexDirection: 'row', gap: 10, marginBottom: 24 }}>
+                    <PhaseAccuracy label="Climb" score={91} color="#00E676" />
+                    <PhaseAccuracy label="Cruise" score={82} color="#4A9EFF" />
+                    <PhaseAccuracy label="Descent" score={79} color="#FF9800" />
+                </View>
+
+                <TouchableOpacity
+                    onPress={() => router.push(`/accuracy/${displayId}`)}
+                    activeOpacity={0.8}
+                    style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.07)', borderRadius: 14, paddingVertical: 16, gap: 4, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}
+                >
+                    <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 15 }}>View Full Report</Text>
+                    <ChevronRight size={18} color="#8E8E93" />
+                </TouchableOpacity>
+            </ScrollView>
+        </SafeAreaView>
+    );
+}
+
+function LegendItem({ color, label }: { color: string; label: string }) {
+    return (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6 }}>
+            <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: color }} />
+            <Text style={{ color: '#8E8E93', fontSize: 12, fontWeight: '500' }}>{label}</Text>
+        </View>
+    );
+}
+
+function PhaseAccuracy({ label, score, color }: { label: string; score: number; color: string }) {
+    return (
+        <View style={{ flex: 1, backgroundColor: 'rgba(255,255,255,0.04)', borderRadius: 16, padding: 12, flexDirection: 'row', alignItems: 'center', gap: 10, borderWidth: 1, borderColor: 'rgba(255,255,255,0.06)' }}>
+            <View style={{ width: 40, height: 40, borderRadius: 20, borderWidth: 2, borderColor: color, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '700' }}>{score}</Text>
+            </View>
+            <Text style={{ color: '#8E8E93', fontSize: 12, fontWeight: '500' }}>{label}</Text>
+        </View>
+    );
+}
+
+================================================================================
+
+Filename: app/complete/[flightId].tsx
+Content:
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { CheckCircle2, Wifi } from 'lucide-react-native';
+import React from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
+
+export default function FlightCompleteScreen() {
+    const router = useRouter();
+    const { flightId } = useLocalSearchParams();
+    const displayId = Array.isArray(flightId) ? flightId[0] : (flightId || 'AI 101');
+
+    return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0F' }}>
+            <View style={{ flex: 1, padding: 24 }}>
+                {/* Success Icon */}
+                <View style={{ alignItems: 'center', marginTop: 48, marginBottom: 40 }}>
+                    <View style={{
+                        width: 96,
+                        height: 96,
+                        borderRadius: 48,
+                        backgroundColor: 'rgba(0,230,118,0.2)',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: 24,
+                    }}>
+                        <CheckCircle2 color="#00E676" size={48} />
+                    </View>
+                    <Text style={{ color: '#FFFFFF', fontSize: 28, fontWeight: '700', marginBottom: 8 }}>
+                        Flight Complete
+                    </Text>
+                    <Text style={{ color: '#8E8E93', fontWeight: '500' }}>
+                        {displayId} · DEL → BOM · 2h 07m
+                    </Text>
+                </View>
+
+                {/* Stats Card */}
+                <View style={{
+                    backgroundColor: 'rgba(255,255,255,0.05)',
+                    borderRadius: 24,
+                    padding: 24,
+                    borderWidth: 1,
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    marginBottom: 40,
+                }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 24 }}>
+                        <View>
+                            <Text style={{ color: '#8E8E93', fontSize: 14 }}>Departed</Text>
+                            <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 18, marginTop: 4 }}>08:45 AM</Text>
+                        </View>
+                        <View>
+                            <Text style={{ color: '#8E8E93', fontSize: 14 }}>Landed</Text>
+                            <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 18, marginTop: 4 }}>10:52 AM</Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View>
+                            <Text style={{ color: '#8E8E93', fontSize: 14 }}>Distance</Text>
+                            <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 18, marginTop: 4 }}>1,136 km</Text>
+                        </View>
+                        <View>
+                            <Text style={{ color: '#8E8E93', fontSize: 14 }}>Est. Accuracy</Text>
+                            <Text style={{ color: 'rgba(255,255,255,0.3)', fontWeight: '600', fontSize: 18, marginTop: 4 }}>—</Text>
+                        </View>
+                    </View>
+                </View>
+
+                {/* Sync Section */}
+                <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 24 }}>
+                        <View style={{
+                            width: 48,
+                            height: 48,
+                            borderRadius: 24,
+                            backgroundColor: 'rgba(74,158,255,0.2)',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginRight: 16,
+                        }}>
+                            <Wifi size={22} color="#4A9EFF" />
+                        </View>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 18 }}>Sync actual flight data</Text>
+                            <Text style={{ color: '#8E8E93', fontSize: 13, marginTop: 4, lineHeight: 18 }}>
+                                Download real ADS-B track to{'\n'}compare with your estimate
+                            </Text>
+                        </View>
+                    </View>
+
+                    <TouchableOpacity
+                        onPress={() => router.push(`/comparison/${displayId}`)}
+                        activeOpacity={0.8}
+                        style={{
+                            backgroundColor: '#4A9EFF',
+                            borderRadius: 50,
+                            paddingVertical: 16,
+                            alignItems: 'center',
+                            marginBottom: 12,
+                        }}
+                    >
+                        <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '600' }}>Sync Now</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => router.push('/')}
+                        activeOpacity={0.6}
+                        style={{ paddingVertical: 16, alignItems: 'center' }}
+                    >
+                        <Text style={{ color: '#8E8E93', fontSize: 16, fontWeight: '600' }}>Skip for now</Text>
+                    </TouchableOpacity>
+
+                    <Text style={{ textAlign: 'center', color: 'rgba(142,142,147,0.5)', fontSize: 11, marginTop: 8, fontWeight: '500' }}>
+                        Data available ~1 hour after landing
+                    </Text>
+                </View>
+            </View>
+        </SafeAreaView>
+    );
+}
+
+================================================================================
+
+Filename: app/download/[flightId].tsx
+Content:
+/**
+ * app/download/[flightId].tsx
+ * Pre-flight download screen — wired to the real DataPipeline.
+ */
+
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Activity, ArrowLeft, CheckCircle2, Map, Minus, Navigation, Thermometer } from 'lucide-react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
+
+import { runDataPipeline } from '../../pipeline/DataPipeline';
+import { airportCoords } from '../../pipeline/airports';
+import { useDownloadProgress } from '../../store';
+
+// ─── Known routes (extend or replace with a flight search API) ────────────────
+
+const ROUTE_LOOKUP: Record<string, { origin: string; destination: string; aircraft?: string }> = {
+  AI101:  { origin: 'VIDP', destination: 'VABB', aircraft: 'B777' },
+  AI102:  { origin: 'VABB', destination: 'VIDP', aircraft: 'B777' },
+  AI191:  { origin: 'VIDP', destination: 'VOMM', aircraft: 'A320' },
+  BA234:  { origin: 'EGLL', destination: 'KJFK', aircraft: 'B747' },
+  EK500:  { origin: 'OMDB', destination: 'VIDP', aircraft: 'A380' },
+};
+
+function resolveRoute(flightNumber: string) {
+  const key = flightNumber.replace(/\s/g, '').toUpperCase();
+  return ROUTE_LOOKUP[key] ?? { origin: 'VIDP', destination: 'VABB' };
+}
+
+// ─── Step metadata ────────────────────────────────────────────────────────────
+
+const STEPS = [
+  { label: 'Route & Waypoints', icon: Navigation, key: 'route'   },
+  { label: 'Speed Profile',     icon: Activity,   key: 'profile' },
+  { label: 'Weather SIGMETs',   icon: Thermometer, key: 'sigmet' },
+  { label: 'Offline Map Tiles', icon: Map,         key: 'tiles'  },
+] as const;
+
+// ─── Component ────────────────────────────────────────────────────────────────
+
+export default function PreFlightScreen() {
+  const router   = useRouter();
+  const { flightId } = useLocalSearchParams();
+
+  const idValue  = Array.isArray(flightId) ? flightId[0] : flightId;
+  const rawId    = (idValue ?? 'AI101').replace('%20', '').replace(' ', '');
+  const displayId = rawId.replace(/([A-Za-z]+)(\d+)/, '$1 $2');
+
+  const progress = useDownloadProgress();
+  const started  = useRef(false);
+
+  const isReady = progress.status === 'done';
+  const hasError = progress.status === 'error';
+
+  // Kick off pipeline once on mount
+  useEffect(() => {
+    if (started.current) return;
+    started.current = true;
+
+    const route = resolveRoute(rawId);
+    const coords = airportCoords(route.origin, route.destination);
+
+    runDataPipeline({
+      flightNumber: rawId,
+      origin:       route.origin,
+      destination:  route.destination,
+      aircraftType: route.aircraft,
+      ...coords,
+    });
+  }, [rawId]);
+
+  const handleReadyToFly = () => {
+    if (!isReady) return;
+    router.push(`/live-map/${rawId}`);
+  };
+
+  // Convert stepsComplete to a percentage for the ring
+  const pct = Math.round((progress.stepsComplete / progress.totalSteps) * 100);
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0F' }}>
+      <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 48, paddingBottom: 16 }}>
+
+        {/* Header */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 48 }}>
+          <TouchableOpacity onPress={() => router.back()} style={{ padding: 8, marginLeft: -8 }}>
+            <ArrowLeft color="#FFF" size={24} />
+          </TouchableOpacity>
+          <Text style={{ flex: 1, textAlign: 'center', color: '#FFFFFF', fontWeight: '600', fontSize: 18, marginRight: 32 }}>
+            {displayId} · {resolveRoute(rawId).origin} → {resolveRoute(rawId).destination}
+          </Text>
+        </View>
+
+        {/* Progress Ring + Steps */}
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+
+          {/* Circular Progress */}
+          <View style={{ width: 224, height: 224, marginBottom: 48, alignItems: 'center', justifyContent: 'center' }}>
+            <View style={{
+              position: 'absolute', width: 224, height: 224, borderRadius: 112,
+              borderWidth: 12, borderColor: 'rgba(255,255,255,0.05)',
+            }} />
+            <View style={{
+              position: 'absolute', width: 224, height: 224, borderRadius: 112,
+              borderWidth: 12,
+              borderTopColor:    pct >= 10 ? (hasError ? '#FF4444' : '#4A9EFF') : 'transparent',
+              borderRightColor:  pct >= 35 ? (hasError ? '#FF4444' : '#4A9EFF') : 'transparent',
+              borderBottomColor: pct >= 60 ? (hasError ? '#FF4444' : '#4A9EFF') : 'transparent',
+              borderLeftColor:   pct >= 85 ? (hasError ? '#FF4444' : '#4A9EFF') : 'transparent',
+              transform: [{ rotate: '-45deg' }],
+            }} />
+            <View style={{ alignItems: 'center' }}>
+              <Text style={{ color: hasError ? '#FF4444' : '#FFFFFF', fontSize: 52, fontWeight: '700', letterSpacing: -2 }}>
+                {pct}
+              </Text>
+              <Text style={{ color: '#8E8E93', fontSize: 20, marginTop: -4 }}>%</Text>
+            </View>
+          </View>
+
+          {/* Steps Card */}
+          <View style={{
+            width: '100%',
+            backgroundColor: 'rgba(28,28,46,0.7)',
+            borderRadius: 24, padding: 24,
+            borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)',
+          }}>
+            {STEPS.map((s, i) => {
+              const Icon    = s.icon;
+              const isDone  = i < progress.stepsComplete;
+              const isActive = progress.step === s.key && !isReady && !hasError;
+              return (
+                <View key={s.key} style={{
+                  flexDirection: 'row', alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginBottom: i < 3 ? 20 : 0,
+                }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <View style={{
+                      padding: 8, borderRadius: 12, marginRight: 12,
+                      backgroundColor: isDone
+                        ? 'rgba(74,158,255,0.2)'
+                        : isActive ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.05)',
+                    }}>
+                      <Icon size={20} color={isDone ? '#4A9EFF' : isActive ? '#FFF' : '#8E8E93'} />
+                    </View>
+                    <Text style={{
+                      fontSize: 15, fontWeight: '500',
+                      color: isDone ? '#FFFFFF' : isActive ? 'rgba(255,255,255,0.9)' : '#8E8E93',
+                    }}>
+                      {s.label}
+                    </Text>
+                  </View>
+                  {isDone
+                    ? <CheckCircle2 size={20} color="#00E676" />
+                    : isActive
+                      ? <ActivityIndicator size="small" color="#4A9EFF" />
+                      : <Minus size={20} color="rgba(142,142,147,0.5)" />}
+                </View>
+              );
+            })}
+          </View>
+
+          {/* Error message */}
+          {hasError && (
+            <Text style={{ color: '#FF4444', fontSize: 13, marginTop: 16, textAlign: 'center', paddingHorizontal: 8 }}>
+              {progress.error ?? 'Download failed. Check your connection and try again.'}
+            </Text>
+          )}
+        </View>
+
+        {/* Bottom */}
+        <View style={{ paddingTop: 24 }}>
+          <View style={{ alignItems: 'center', marginBottom: 24 }}>
+            <View style={{
+              paddingHorizontal: 16, paddingVertical: 6, borderRadius: 50,
+              backgroundColor: 'rgba(255,255,255,0.05)',
+              borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
+            }}>
+              <Text style={{ color: '#8E8E93', fontSize: 12, fontWeight: '500' }}>
+                {isReady
+                  ? 'All steps complete'
+                  : hasError
+                    ? 'Download failed'
+                    : `Downloading… ${progress.stepsComplete} of ${progress.totalSteps}`}
+              </Text>
+            </View>
+          </View>
+
+          {hasError ? (
+            <TouchableOpacity
+              onPress={() => { started.current = false; }}
+              activeOpacity={0.8}
+              style={{ backgroundColor: '#4A9EFF', borderRadius: 50, paddingVertical: 16, alignItems: 'center' }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600', color: '#FFFFFF' }}>Retry</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity
+              onPress={handleReadyToFly}
+              activeOpacity={isReady ? 0.8 : 1}
+              style={{
+                backgroundColor: isReady ? '#4A9EFF' : 'rgba(255,255,255,0.1)',
+                borderRadius: 50, paddingVertical: 16, alignItems: 'center',
+              }}
+            >
+              <Text style={{ fontSize: 18, fontWeight: '600', color: isReady ? '#FFFFFF' : '#8E8E93' }}>
+                Ready to Fly
+              </Text>
+            </TouchableOpacity>
+          )}
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+================================================================================
+
+Filename: app/index.tsx
+Content:
+import { useRouter } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Plane, Search } from 'lucide-react-native';
+import React, { useState } from 'react';
+import {
+    ScrollView,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    View,
+} from 'react-native';
+
+export default function FlightSearchScreen() {
+    const router = useRouter();
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearch = () => {
+        const query = searchQuery.trim() || 'AI101';
+        router.push(`/download/${query}`);
+    };
+
+    return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0F' }}>
+            <View style={{ flex: 1, paddingHorizontal: 24, paddingTop: 48, paddingBottom: 16 }}>
+                {/* Header */}
+                <View style={{ marginBottom: 32 }}>
+                    <Text style={{ color: '#FFFFFF', fontSize: 36, fontWeight: '600', marginBottom: 8, lineHeight: 44 }}>
+                        Where are{'\n'}you flying?
+                    </Text>
+                    <Text style={{ color: '#8E8E93', fontSize: 18 }}>Search your flight number</Text>
+                </View>
+
+                {/* Search Bar */}
+                <View style={{ marginBottom: 40 }}>
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        paddingHorizontal: 20,
+                        paddingVertical: 16,
+                        borderRadius: 50,
+                        borderWidth: 1,
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        backgroundColor: 'rgba(255,255,255,0.05)',
+                    }}>
+                        <Search size={22} color="#4A9EFF" style={{ marginRight: 12 }} />
+                        <TextInput
+                            placeholder="e.g. AI101"
+                            placeholderTextColor="#8E8E93"
+                            value={searchQuery}
+                            onChangeText={setSearchQuery}
+                            onSubmitEditing={handleSearch}
+                            style={{ flex: 1, color: '#FFFFFF', fontSize: 18, fontWeight: '500' }}
+                            autoCapitalize="characters"
+                            returnKeyType="search"
+                        />
+                    </View>
+                </View>
+
+                {/* Recent Flights */}
+                <View style={{ flex: 1 }}>
+                    <Text style={{ color: '#8E8E93', fontSize: 12, fontWeight: '500', marginBottom: 16, textTransform: 'uppercase', letterSpacing: 1 }}>
+                        Recent Flights
+                    </Text>
+                    <ScrollView showsVerticalScrollIndicator={false}>
+                        <FlightCard
+                            flightNum="AI 101"
+                            route="DEL → BOM"
+                            time="08:45 AM"
+                            status="On Time"
+                            statusColor="#00E676"
+                            onClick={() => router.push('/download/AI101')}
+                        />
+                        <View style={{ height: 12 }} />
+                        <FlightCard
+                            flightNum="BA 234"
+                            route="LHR → JFK"
+                            time="14:20 PM"
+                            status="Delayed"
+                            statusColor="#FF9800"
+                            onClick={() => router.push('/download/BA234')}
+                        />
+                    </ScrollView>
+                </View>
+
+                {/* CTA Button */}
+                <View style={{ paddingTop: 24 }}>
+                    <TouchableOpacity
+                        onPress={handleSearch}
+                        activeOpacity={0.8}
+                        style={{
+                            backgroundColor: '#4A9EFF',
+                            borderRadius: 50,
+                            paddingVertical: 16,
+                            alignItems: 'center',
+                        }}
+                    >
+                        <Text style={{ color: '#FFFFFF', fontSize: 18, fontWeight: '600' }}>Find Flight</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </SafeAreaView>
+    );
+}
+
+function FlightCard({
+    flightNum,
+    route,
+    time,
+    status,
+    statusColor,
+    onClick,
+}: {
+    flightNum: string;
+    route: string;
+    time: string;
+    status: string;
+    statusColor: string;
+    onClick: () => void;
+}) {
+    return (
+        <TouchableOpacity
+            onPress={onClick}
+            activeOpacity={0.8}
+            style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                padding: 16,
+                borderRadius: 16,
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                borderWidth: 1,
+                borderColor: 'rgba(255,255,255,0.1)',
+            }}
+        >
+            <View style={{
+                width: 48,
+                height: 48,
+                borderRadius: 24,
+                backgroundColor: 'rgba(255,255,255,0.1)',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: 16,
+            }}>
+                <Plane size={22} color="#FFFFFF" />
+            </View>
+            <View style={{ flex: 1 }}>
+                <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 18 }}>{flightNum}</Text>
+                <Text style={{ color: '#8E8E93', fontSize: 14, marginTop: 2 }}>{route}</Text>
+            </View>
+            <View style={{ alignItems: 'flex-end' }}>
+                <Text style={{ color: '#4A9EFF', fontWeight: '600' }}>{time}</Text>
+                <View style={{ backgroundColor: 'rgba(255,255,255,0.1)', paddingHorizontal: 8, paddingVertical: 3, borderRadius: 50, marginTop: 4 }}>
+                    <Text style={{ color: statusColor, fontSize: 11, fontWeight: '500' }}>{status}</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
+    );
+}
+
+================================================================================
+
+Filename: app/live-map/LiveMapScreen.native.tsx
+Error reading file: [WinError 2] The system cannot find the file specified: '.\\app/live-map/LiveMapScreen.native.tsx'
+
+
+Filename: app/live-map/LiveMapScreen.tsx
+Error reading file: [WinError 2] The system cannot find the file specified: '.\\app/live-map/LiveMapScreen.tsx'
+
+
+Filename: app/live-map/LiveMapScreen.web.tsx
+Error reading file: [WinError 2] The system cannot find the file specified: '.\\app/live-map/LiveMapScreen.web.tsx'
+
+
+Filename: app/live-map/[flightId].tsx
+Content:
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import { Compass, Crosshair, Navigation } from 'lucide-react-native';
+import React, { useState } from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import MapView, { Marker, Polyline, PROVIDER_DEFAULT } from 'react-native-maps';
+
+const darkMapStyle = [
+    { elementType: 'geometry', stylers: [{ color: '#0A0A0F' }] },
+    { elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
+    { elementType: 'labels.text.fill', stylers: [{ color: '#757575' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#050508' }] },
+];
+
+const routeCoords = [
+    { latitude: 28.5562, longitude: 77.1000 },
+    { latitude: 26.0, longitude: 76.0 },
+    { latitude: 23.0, longitude: 75.0 },
+    { latitude: 19.0896, longitude: 72.8656 },
+];
+
+const BOTTOM_HEIGHT = 240;
+
+export default function LiveMapScreen() {
+    const router = useRouter();
+    const { flightId } = useLocalSearchParams();
+    const displayId = Array.isArray(flightId) ? flightId[0] : (flightId || 'AI101');
+    const [drawerOpen, setDrawerOpen] = useState(false);
+
+    return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: '#0A0A0F' }} edges={['top']}>
+            <View style={{ flex: 1 }}>
+
+                {/* MAP */}
+                <View style={{ flex: 1, marginBottom: BOTTOM_HEIGHT }}>
+                    {Platform.OS !== 'web' ? (
+                        <MapView
+                            provider={PROVIDER_DEFAULT}
+                            style={StyleSheet.absoluteFillObject}
+                            userInterfaceStyle="dark"
+                            customMapStyle={darkMapStyle}
+                            initialRegion={{ latitude: 23.5, longitude: 75.0, latitudeDelta: 15, longitudeDelta: 15 }}
+                        >
+                            <Polyline coordinates={routeCoords} strokeColor="#4A9EFF" strokeWidth={3} lineDashPattern={[6, 4]} />
+                            <Marker coordinate={routeCoords[0]} title="DEL" pinColor="#4A9EFF" />
+                            <Marker coordinate={routeCoords[3]} title="BOM" pinColor="#00E676" />
+                            <Marker coordinate={{ latitude: 23.0, longitude: 75.0 }} title="Current">
+                                <View style={{ padding: 4 }}><Navigation size={28} color="#FFF" /></View>
+                            </Marker>
+                        </MapView>
+                    ) : (
+                        <WebMapFallback />
+                    )}
+
+                    {/* Controls overlay */}
+                    <View style={{ position: 'absolute', top: 12, left: 20, right: 20, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <View style={{ backgroundColor: 'rgba(10,10,15,0.88)', borderRadius: 14, padding: 14, borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
+                            <Text style={{ color: '#8E8E93', fontSize: 9, textTransform: 'uppercase', letterSpacing: 1.2, marginBottom: 3 }}>ETA BOM</Text>
+                            <Text style={{ color: '#4A9EFF', fontSize: 21, fontWeight: '700' }}>10:52 AM</Text>
+                        </View>
+                        <View style={{ gap: 8 }}>
+                            <TouchableOpacity style={styles.iconBtn}><Crosshair size={18} color="#FFF" /></TouchableOpacity>
+                            <TouchableOpacity style={styles.iconBtn}><Compass size={18} color="#FFF" /></TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+
+                {/* BOTTOM SHEET */}
+                <View style={{
+                    position: 'absolute', bottom: 0, left: 0, right: 0,
+                    height: drawerOpen ? BOTTOM_HEIGHT + 72 : BOTTOM_HEIGHT,
+                    backgroundColor: '#0D0D14',
+                    borderTopLeftRadius: 22, borderTopRightRadius: 22,
+                    paddingTop: 8, paddingHorizontal: 22, paddingBottom: 20,
+                    borderTopWidth: 1, borderColor: 'rgba(255,255,255,0.09)',
+                }}>
+                    <TouchableOpacity
+                        style={{ width: 44, height: 5, backgroundColor: 'rgba(255,255,255,0.18)', borderRadius: 3, alignSelf: 'center', marginBottom: 18 }}
+                        onPress={() => setDrawerOpen(!drawerOpen)}
+                    />
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 18 }}>
+                        <View>
+                            <Text style={{ color: '#FFFFFF', fontSize: 19, fontWeight: '700', marginBottom: 2 }}>{displayId}</Text>
+                            <Text style={{ color: '#8E8E93', fontSize: 12 }}>Boeing 777-300ER</Text>
+                        </View>
+                        <View style={{ alignItems: 'flex-end' }}>
+                            <Text style={{ color: '#4A9EFF', fontWeight: '700', fontSize: 16 }}>34,000 ft</Text>
+                            <Text style={{ color: '#8E8E93', fontSize: 12 }}>480 kts</Text>
+                        </View>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 18 }}>
+                        <View style={{ flex: 1 }}>
+                            <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15, marginBottom: 2 }}>DEL</Text>
+                            <Text style={{ color: '#8E8E93', fontSize: 11 }}>08:45 AM</Text>
+                        </View>
+                        <View style={{ flex: 2, paddingHorizontal: 12, alignItems: 'center' }}>
+                            <View style={{ width: '100%', height: 3, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: 2, overflow: 'hidden' }}>
+                                <View style={{ width: '75%', height: '100%', backgroundColor: '#4A9EFF', borderRadius: 2 }} />
+                            </View>
+                            <Text style={{ color: '#8E8E93', fontSize: 10, marginTop: 5 }}>1h 12m remaining</Text>
+                        </View>
+                        <View style={{ flex: 1, alignItems: 'flex-end' }}>
+                            <Text style={{ color: '#FFFFFF', fontWeight: '700', fontSize: 15, marginBottom: 2 }}>BOM</Text>
+                            <Text style={{ color: '#8E8E93', fontSize: 11 }}>10:52 AM</Text>
+                        </View>
+                    </View>
+                    {drawerOpen && (
+                        <View style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderRadius: 12, padding: 14, marginBottom: 14, borderWidth: 1, borderColor: 'rgba(255,255,255,0.07)' }}>
+                            <Text style={{ color: '#8E8E93', fontSize: 9, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 5 }}>Next Waypoint</Text>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 15 }}>VABO</Text>
+                                <Text style={{ color: '#8E8E93' }}>12 mins</Text>
+                            </View>
+                        </View>
+                    )}
+                    <TouchableOpacity
+                        onPress={() => router.push(`/complete/${displayId}`)}
+                        activeOpacity={0.8}
+                        style={{ backgroundColor: 'rgba(255,255,255,0.07)', paddingVertical: 14, borderRadius: 50, borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)', alignItems: 'center' }}
+                    >
+                        <Text style={{ color: '#FFFFFF', fontWeight: '600', fontSize: 14 }}>Debug: Trigger Landing</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </SafeAreaView>
+    );
+}
+
+// Waypoints: label, position along route (0–1), color
+const WAYPOINTS = [
+    { label: 'DEL',  pct: 0,    color: '#4A9EFF', isAirport: true },
+    { label: 'VABO', pct: 0.33, color: '#8E8E93', isAirport: false },
+    { label: 'RNAV', pct: 0.62, color: '#FF9800', isAirport: false },
+    { label: 'BOM',  pct: 1,    color: '#00E676', isAirport: true },
+];
+const PLANE_PCT = 0.62; // plane is just past RNAV
+
+function WebMapFallback() {
+    return (
+        <View style={{ flex: 1, backgroundColor: '#080D18', justifyContent: 'center', alignItems: 'center' }}>
+
+            {/* Grid */}
+            {[25, 50, 75].map(p => (
+                <View key={`h${p}`} style={{ position: 'absolute', top: `${p}%` as any, left: 0, right: 0, height: 1, backgroundColor: 'rgba(255,255,255,0.04)' }} />
+            ))}
+            {[25, 50, 75].map(p => (
+                <View key={`v${p}`} style={{ position: 'absolute', left: `${p}%` as any, top: 0, bottom: 0, width: 1, backgroundColor: 'rgba(255,255,255,0.04)' }} />
+            ))}
+
+            {/* Route container — fixed height, centred */}
+            <View style={{ width: '82%', height: 80, position: 'relative' }}>
+
+                {/* Unfilled track */}
+                <View style={{
+                    position: 'absolute',
+                    top: 32, left: 0, right: 0,
+                    height: 2,
+                    backgroundColor: 'rgba(255,255,255,0.08)',
+                    borderRadius: 1,
+                }} />
+                {/* Filled progress */}
+                <View style={{
+                    position: 'absolute',
+                    top: 32, left: 0,
+                    width: `${PLANE_PCT * 100}%`,
+                    height: 2,
+                    backgroundColor: '#4A9EFF',
+                    borderRadius: 1,
+                }} />
+
+                {/* Waypoints */}
+                {WAYPOINTS.map((wp) => (
+                    <View key={wp.label} style={{
+                        position: 'absolute',
+                        left: `${wp.pct * 100}%` as any,
+                        top: 0,
+                        alignItems: 'center',
+                        transform: [{ translateX: -12 }],
+                        width: 24,
+                    }}>
+                        {/* Dot */}
+                        <View style={{
+                            width: wp.isAirport ? 12 : 9,
+                            height: wp.isAirport ? 12 : 9,
+                            borderRadius: wp.isAirport ? 6 : 4.5,
+                            backgroundColor: wp.color,
+                            marginBottom: 6,
+                            marginTop: wp.isAirport ? 26 : 27.5,
+                            borderWidth: wp.isAirport ? 2 : 0,
+                            borderColor: '#080D18',
+                        }} />
+                        {/* Label */}
+                        <Text style={{
+                            color: wp.color,
+                            fontSize: 10,
+                            fontWeight: '600',
+                            letterSpacing: 0.3,
+                        }}>
+                            {wp.label}
+                        </Text>
+                    </View>
+                ))}
+
+                {/* Plane icon */}
+                <View style={{
+                    position: 'absolute',
+                    left: `${PLANE_PCT * 100}%` as any,
+                    top: 8,
+                    transform: [{ translateX: -22 }],
+                    backgroundColor: 'rgba(74,158,255,0.18)',
+                    borderRadius: 18,
+                    padding: 8,
+                    borderWidth: 1.5,
+                    borderColor: 'rgba(74,158,255,0.5)',
+                }}>
+                    <Navigation size={18} color="#4A9EFF" />
+                </View>
+            </View>
+
+            {/* Status pill */}
+            <View style={{
+                position: 'absolute', bottom: 20,
+                flexDirection: 'row', alignItems: 'center', gap: 7,
+                backgroundColor: 'rgba(0,0,0,0.55)',
+                paddingHorizontal: 16, paddingVertical: 8,
+                borderRadius: 50,
+                borderWidth: 1, borderColor: 'rgba(255,255,255,0.07)',
+            }}>
+                <View style={{ width: 6, height: 6, borderRadius: 3, backgroundColor: '#00E676' }} />
+                <Text style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12 }}>Dead reckoning active · 62% complete</Text>
+            </View>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    iconBtn: {
+        width: 40, height: 40,
+        backgroundColor: 'rgba(10,10,15,0.88)',
+        borderRadius: 20,
+        alignItems: 'center', justifyContent: 'center',
+        borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
+    },
+});
+
+================================================================================
+
+Filename: assets/images/android-icon-background.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/android-icon-foreground.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/android-icon-monochrome.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/favicon.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/icon.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/partial-react-logo.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/react-logo.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/react-logo@2x.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/react-logo@3x.png
+Content: [Binary file - cannot display content]
+
+
+Filename: assets/images/splash-icon.png
+Content: [Binary file - cannot display content]
+
+
+Filename: babel.config.js
+Content:
+module.exports = function (api) {
+    api.cache(true);
+    return {
+        presets: [
+            ["babel-preset-expo", { jsxImportSource: "nativewind" }]
+        ],
+        plugins: [
+            "react-native-reanimated/plugin",
+        ],
+    };
+};
+
+================================================================================
+
+Filename: components/external-link.tsx
+Content:
+import { Href, Link } from 'expo-router';
+import { openBrowserAsync, WebBrowserPresentationStyle } from 'expo-web-browser';
+import { type ComponentProps } from 'react';
+
+type Props = Omit<ComponentProps<typeof Link>, 'href'> & { href: Href & string };
+
+export function ExternalLink({ href, ...rest }: Props) {
+  return (
+    <Link
+      target="_blank"
+      {...rest}
+      href={href}
+      onPress={async (event) => {
+        if (process.env.EXPO_OS !== 'web') {
+          // Prevent the default behavior of linking to the default browser on native.
+          event.preventDefault();
+          // Open the link in an in-app browser.
+          await openBrowserAsync(href, {
+            presentationStyle: WebBrowserPresentationStyle.AUTOMATIC,
+          });
+        }
+      }}
+    />
+  );
+}
+
+
+================================================================================
+
+Filename: components/haptic-tab.tsx
+Content:
+import { BottomTabBarButtonProps } from '@react-navigation/bottom-tabs';
+import { PlatformPressable } from '@react-navigation/elements';
+import * as Haptics from 'expo-haptics';
+
+export function HapticTab(props: BottomTabBarButtonProps) {
+  return (
+    <PlatformPressable
+      {...props}
+      onPressIn={(ev) => {
+        if (process.env.EXPO_OS === 'ios') {
+          // Add a soft haptic feedback when pressing down on the tabs.
+          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+        }
+        props.onPressIn?.(ev);
+      }}
+    />
+  );
+}
+
+
+================================================================================
+
+Filename: components/hello-wave.tsx
+Content:
+import Animated from 'react-native-reanimated';
+
+export function HelloWave() {
+  return (
+    <Animated.Text
+      style={{
+        fontSize: 28,
+        lineHeight: 32,
+        marginTop: -6,
+        animationName: {
+          '50%': { transform: [{ rotate: '25deg' }] },
+        },
+        animationIterationCount: 4,
+        animationDuration: '300ms',
+      }}>
+      👋
+    </Animated.Text>
+  );
+}
+
+
+================================================================================
+
+Filename: components/parallax-scroll-view.tsx
+Content:
+import type { PropsWithChildren, ReactElement } from 'react';
+import { StyleSheet } from 'react-native';
+import Animated, {
+  interpolate,
+  useAnimatedRef,
+  useAnimatedStyle,
+  useScrollOffset,
+} from 'react-native-reanimated';
+
+import { ThemedView } from '@/components/themed-view';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useThemeColor } from '@/hooks/use-theme-color';
+
+const HEADER_HEIGHT = 250;
+
+type Props = PropsWithChildren<{
+  headerImage: ReactElement;
+  headerBackgroundColor: { dark: string; light: string };
+}>;
+
+export default function ParallaxScrollView({
+  children,
+  headerImage,
+  headerBackgroundColor,
+}: Props) {
+  const backgroundColor = useThemeColor({}, 'background');
+  const colorScheme = useColorScheme() ?? 'light';
+  const scrollRef = useAnimatedRef<Animated.ScrollView>();
+  const scrollOffset = useScrollOffset(scrollRef);
+  const headerAnimatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateY: interpolate(
+            scrollOffset.value,
+            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
+          ),
+        },
+        {
+          scale: interpolate(scrollOffset.value, [-HEADER_HEIGHT, 0, HEADER_HEIGHT], [2, 1, 1]),
+        },
+      ],
+    };
+  });
+
+  return (
+    <Animated.ScrollView
+      ref={scrollRef}
+      style={{ backgroundColor, flex: 1 }}
+      scrollEventThrottle={16}>
+      <Animated.View
+        style={[
+          styles.header,
+          { backgroundColor: headerBackgroundColor[colorScheme] },
+          headerAnimatedStyle,
+        ]}>
+        {headerImage}
+      </Animated.View>
+      <ThemedView style={styles.content}>{children}</ThemedView>
+    </Animated.ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    height: HEADER_HEIGHT,
+    overflow: 'hidden',
+  },
+  content: {
+    flex: 1,
+    padding: 32,
+    gap: 16,
+    overflow: 'hidden',
+  },
+});
+
+
+================================================================================
+
+Filename: components/themed-text.tsx
+Content:
+import { StyleSheet, Text, type TextProps } from 'react-native';
+
+import { useThemeColor } from '@/hooks/use-theme-color';
+
+export type ThemedTextProps = TextProps & {
+  lightColor?: string;
+  darkColor?: string;
+  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+};
+
+export function ThemedText({
+  style,
+  lightColor,
+  darkColor,
+  type = 'default',
+  ...rest
+}: ThemedTextProps) {
+  const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+
+  return (
+    <Text
+      style={[
+        { color },
+        type === 'default' ? styles.default : undefined,
+        type === 'title' ? styles.title : undefined,
+        type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
+        type === 'subtitle' ? styles.subtitle : undefined,
+        type === 'link' ? styles.link : undefined,
+        style,
+      ]}
+      {...rest}
+    />
+  );
+}
+
+const styles = StyleSheet.create({
+  default: {
+    fontSize: 16,
+    lineHeight: 24,
+  },
+  defaultSemiBold: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: '600',
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    lineHeight: 32,
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  link: {
+    lineHeight: 30,
+    fontSize: 16,
+    color: '#0a7ea4',
+  },
+});
+
+
+================================================================================
+
+Filename: components/themed-view.tsx
+Content:
+import { View, type ViewProps } from 'react-native';
+
+import { useThemeColor } from '@/hooks/use-theme-color';
+
+export type ThemedViewProps = ViewProps & {
+  lightColor?: string;
+  darkColor?: string;
+};
+
+export function ThemedView({ style, lightColor, darkColor, ...otherProps }: ThemedViewProps) {
+  const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+
+  return <View style={[{ backgroundColor }, style]} {...otherProps} />;
+}
+
+
+================================================================================
+
+Filename: components/ui/collapsible.tsx
+Content:
+import { PropsWithChildren, useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { Colors } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+
+export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const theme = useColorScheme() ?? 'light';
+
+  return (
+    <ThemedView>
+      <TouchableOpacity
+        style={styles.heading}
+        onPress={() => setIsOpen((value) => !value)}
+        activeOpacity={0.8}>
+        <IconSymbol
+          name="chevron.right"
+          size={18}
+          weight="medium"
+          color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
+          style={{ transform: [{ rotate: isOpen ? '90deg' : '0deg' }] }}
+        />
+
+        <ThemedText type="defaultSemiBold">{title}</ThemedText>
+      </TouchableOpacity>
+      {isOpen && <ThemedView style={styles.content}>{children}</ThemedView>}
+    </ThemedView>
+  );
+}
+
+const styles = StyleSheet.create({
+  heading: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  content: {
+    marginTop: 6,
+    marginLeft: 24,
+  },
+});
+
+
+================================================================================
+
+Filename: components/ui/icon-symbol.ios.tsx
+Content:
+import { SymbolView, SymbolViewProps, SymbolWeight } from 'expo-symbols';
+import { StyleProp, ViewStyle } from 'react-native';
+
+export function IconSymbol({
+  name,
+  size = 24,
+  color,
+  style,
+  weight = 'regular',
+}: {
+  name: SymbolViewProps['name'];
+  size?: number;
+  color: string;
+  style?: StyleProp<ViewStyle>;
+  weight?: SymbolWeight;
+}) {
+  return (
+    <SymbolView
+      weight={weight}
+      tintColor={color}
+      resizeMode="scaleAspectFit"
+      name={name}
+      style={[
+        {
+          width: size,
+          height: size,
+        },
+        style,
+      ]}
+    />
+  );
+}
+
+
+================================================================================
+
+Filename: components/ui/icon-symbol.tsx
+Content:
+// Fallback for using MaterialIcons on Android and web.
+
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { SymbolWeight, SymbolViewProps } from 'expo-symbols';
+import { ComponentProps } from 'react';
+import { OpaqueColorValue, type StyleProp, type TextStyle } from 'react-native';
+
+type IconMapping = Record<SymbolViewProps['name'], ComponentProps<typeof MaterialIcons>['name']>;
+type IconSymbolName = keyof typeof MAPPING;
+
+/**
+ * Add your SF Symbols to Material Icons mappings here.
+ * - see Material Icons in the [Icons Directory](https://icons.expo.fyi).
+ * - see SF Symbols in the [SF Symbols](https://developer.apple.com/sf-symbols/) app.
+ */
+const MAPPING = {
+  'house.fill': 'home',
+  'paperplane.fill': 'send',
+  'chevron.left.forwardslash.chevron.right': 'code',
+  'chevron.right': 'chevron-right',
+} as IconMapping;
+
+/**
+ * An icon component that uses native SF Symbols on iOS, and Material Icons on Android and web.
+ * This ensures a consistent look across platforms, and optimal resource usage.
+ * Icon `name`s are based on SF Symbols and require manual mapping to Material Icons.
+ */
+export function IconSymbol({
+  name,
+  size = 24,
+  color,
+  style,
+}: {
+  name: IconSymbolName;
+  size?: number;
+  color: string | OpaqueColorValue;
+  style?: StyleProp<TextStyle>;
+  weight?: SymbolWeight;
+}) {
+  return <MaterialIcons color={color} size={size} name={MAPPING[name]} style={style} />;
+}
+
+
+================================================================================
+
+Filename: constants/MapStyle.ts
+Content:
+export const darkMapStyle = [
+    {
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#0A0A0F" }
+        ]
+    },
+    {
+        "elementType": "labels.icon",
+        "stylers": [
+            { "visibility": "off" }
+        ]
+    },
+    {
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#757575" }
+        ]
+    },
+    {
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            { "color": "#0A0A0F" }
+        ]
+    },
+    {
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#757575" }
+        ]
+    },
+    {
+        "featureType": "administrative.country",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#9e9e9e" }
+        ]
+    },
+    {
+        "featureType": "administrative.land_parcel",
+        "stylers": [
+            { "visibility": "off" }
+        ]
+    },
+    {
+        "featureType": "administrative.locality",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#bdbdbd" }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#757575" }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#181818" }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#616161" }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels.text.stroke",
+        "stylers": [
+            { "color": "#1b1b1b" }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.fill",
+        "stylers": [
+            { "color": "#111116" }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#8a8a8a" }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#16161c" }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#1c1c23" }
+        ]
+    },
+    {
+        "featureType": "road.highway.controlled_access",
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#1c1c23" }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            { "color": "#050508" }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels.text.fill",
+        "stylers": [
+            { "color": "#3d3d3d" }
+        ]
+    }
+];
+
+================================================================================
+
+Filename: constants/theme.ts
+Content:
+/**
+ * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
+ * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
+ */
+
+import { Platform } from 'react-native';
+
+const tintColorLight = '#0a7ea4';
+const tintColorDark = '#fff';
+
+export const Colors = {
+  light: {
+    text: '#11181C',
+    background: '#fff',
+    tint: tintColorLight,
+    icon: '#687076',
+    tabIconDefault: '#687076',
+    tabIconSelected: tintColorLight,
+  },
+  dark: {
+    text: '#ECEDEE',
+    background: '#151718',
+    tint: tintColorDark,
+    icon: '#9BA1A6',
+    tabIconDefault: '#9BA1A6',
+    tabIconSelected: tintColorDark,
+  },
+};
+
+export const Fonts = Platform.select({
+  ios: {
+    /** iOS `UIFontDescriptorSystemDesignDefault` */
+    sans: 'system-ui',
+    /** iOS `UIFontDescriptorSystemDesignSerif` */
+    serif: 'ui-serif',
+    /** iOS `UIFontDescriptorSystemDesignRounded` */
+    rounded: 'ui-rounded',
+    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
+    mono: 'ui-monospace',
+  },
+  default: {
+    sans: 'normal',
+    serif: 'serif',
+    rounded: 'normal',
+    mono: 'monospace',
+  },
+  web: {
+    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+    serif: "Georgia, 'Times New Roman', serif",
+    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
+    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+  },
+});
+
+
+================================================================================
+
+Filename: docs/OfflineAir - Updated Data Flow Diagram (with Post-flight).png
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir - Updated ER Diagram (with Post-flight).png
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir - Updated Sequence Diagram (with Post-flight).png
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir - Updated System Architecture (with Post-flight).png
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir - Updated UML Class Diagram (with Post-flight).png
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir - Updated Use Case Diagram (with Post-flight).png
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir_Architecture_v1.1.pdf
+Content: [Binary file - cannot display content]
+
+
+Filename: docs/OfflineAir_SRS_v1.1.pdf
+Content: [Binary file - cannot display content]
+
+
+Filename: eslint.config.js
+Content:
+// https://docs.expo.dev/guides/using-eslint/
+const { defineConfig } = require('eslint/config');
+const expoConfig = require('eslint-config-expo/flat');
+
+module.exports = defineConfig([
+  expoConfig,
+  {
+    ignores: ['dist/*'],
+  },
+]);
+
+
+================================================================================
+
+Filename: global.css
+Content:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+================================================================================
+
+Filename: guidelines/Guidelines.md
+Content:
+**Add your own guidelines here**
+<!--
+
+System Guidelines
+
+Use this file to provide the AI with rules and guidelines you want it to follow.
+This template outlines a few examples of things you can add. You can add your own sections and format it to suit your needs
+
+TIP: More context isn't always better. It can confuse the LLM. Try and add the most important rules you need
+
+# General guidelines
+
+Any general rules you want the AI to follow.
+For example:
+
+* Only use absolute positioning when necessary. Opt for responsive and well structured layouts that use flexbox and grid by default
+* Refactor code as you go to keep code clean
+* Keep file sizes small and put helper functions and components in their own files.
+
+--------------
+
+# Design system guidelines
+Rules for how the AI should make generations look like your company's design system
+
+Additionally, if you select a design system to use in the prompt box, you can reference
+your design system's components, tokens, variables and components.
+For example:
+
+* Use a base font-size of 14px
+* Date formats should always be in the format “Jun 10”
+* The bottom toolbar should only ever have a maximum of 4 items
+* Never use the floating action button with the bottom toolbar
+* Chips should always come in sets of 3 or more
+* Don't use a dropdown if there are 2 or fewer options
+
+You can also create sub sections and add more specific details
+For example:
+
+
+## Button
+The Button component is a fundamental interactive element in our design system, designed to trigger actions or navigate
+users through the application. It provides visual feedback and clear affordances to enhance user experience.
+
+### Usage
+Buttons should be used for important actions that users need to take, such as form submissions, confirming choices,
+or initiating processes. They communicate interactivity and should have clear, action-oriented labels.
+
+### Variants
+* Primary Button
+  * Purpose : Used for the main action in a section or page
+  * Visual Style : Bold, filled with the primary brand color
+  * Usage : One primary button per section to guide users toward the most important action
+* Secondary Button
+  * Purpose : Used for alternative or supporting actions
+  * Visual Style : Outlined with the primary color, transparent background
+  * Usage : Can appear alongside a primary button for less important actions
+* Tertiary Button
+  * Purpose : Used for the least important actions
+  * Visual Style : Text-only with no border, using primary color
+  * Usage : For actions that should be available but not emphasized
+-->
+
+
+================================================================================
+
+Filename: hooks/use-color-scheme.ts
+Content:
+export { useColorScheme } from 'react-native';
+
+
+================================================================================
+
+Filename: hooks/use-color-scheme.web.ts
+Content:
+import { useEffect, useState } from 'react';
+import { useColorScheme as useRNColorScheme } from 'react-native';
+
+/**
+ * To support static rendering, this value needs to be re-calculated on the client side for web
+ */
+export function useColorScheme() {
+  const [hasHydrated, setHasHydrated] = useState(false);
+
+  useEffect(() => {
+    setHasHydrated(true);
+  }, []);
+
+  const colorScheme = useRNColorScheme();
+
+  if (hasHydrated) {
+    return colorScheme;
+  }
+
+  return 'light';
+}
+
+
+================================================================================
+
+Filename: hooks/use-theme-color.ts
+Content:
+/**
+ * Learn more about light and dark modes:
+ * https://docs.expo.dev/guides/color-schemes/
+ */
+
+import { Colors } from '@/constants/theme';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+
+export function useThemeColor(
+  props: { light?: string; dark?: string },
+  colorName: keyof typeof Colors.light & keyof typeof Colors.dark
+) {
+  const theme = useColorScheme() ?? 'light';
+  const colorFromProps = props[theme];
+
+  if (colorFromProps) {
+    return colorFromProps;
+  } else {
+    return Colors[theme][colorName];
+  }
+}
+
+
+================================================================================
+
+Filename: nativewind-env.d.ts
+Content:
+/// <reference types="nativewind/types" />
+
+================================================================================
+
+Filename: package-lock.json
+Content:
 {
   "name": "expo-mobile",
   "version": "1.0.0",
@@ -30,6 +2040,7 @@
         "lucide-react-native": "^0.577.0",
         "nativewind": "^4.2.3",
         "react": "19.1.0",
+        "react-dom": "19.1.0",
         "react-native": "0.81.5",
         "react-native-gesture-handler": "~2.28.0",
         "react-native-maps": "1.20.1",
@@ -37,6 +2048,7 @@
         "react-native-safe-area-context": "~5.6.0",
         "react-native-screens": "~4.16.0",
         "react-native-svg": "15.12.1",
+        "react-native-web": "~0.21.0",
         "react-native-worklets": "0.5.1",
         "zustand": "^5.0.12"
       },
@@ -5288,6 +7300,15 @@
         "url": "https://opencollective.com/core-js"
       }
     },
+    "node_modules/cross-fetch": {
+      "version": "3.2.0",
+      "resolved": "https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.2.0.tgz",
+      "integrity": "sha512-Q+xVJLoGOeIMXZmbUK4HYk+69cQH6LudR0Vu/pRm2YlU/hDV9CiS0gKUMaWY5f2NeUH9C1nV3bsTlCo0FsTV1Q==",
+      "license": "MIT",
+      "dependencies": {
+        "node-fetch": "^2.7.0"
+      }
+    },
     "node_modules/cross-spawn": {
       "version": "7.0.6",
       "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz",
@@ -5300,6 +7321,15 @@
       },
       "engines": {
         "node": ">= 8"
+      }
+    },
+    "node_modules/css-in-js-utils": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/css-in-js-utils/-/css-in-js-utils-3.1.0.tgz",
+      "integrity": "sha512-fJAcud6B3rRu+KHYk+Bwf+WFL2MDCJJ1XG9x137tJQ0xYxor7XziQtuGFbWNdqrvF4Tk26O3H73nfVqXt/fW1A==",
+      "license": "MIT",
+      "dependencies": {
+        "hyphenate-style-name": "^1.0.3"
       }
     },
     "node_modules/css-select": {
@@ -7197,6 +9227,36 @@
         "bser": "2.1.1"
       }
     },
+    "node_modules/fbjs": {
+      "version": "3.0.5",
+      "resolved": "https://registry.npmjs.org/fbjs/-/fbjs-3.0.5.tgz",
+      "integrity": "sha512-ztsSx77JBtkuMrEypfhgc3cI0+0h+svqeie7xHbh1k/IKdcydnvadp/mUaGgjAOXQmQSxsqgaRhS3q9fy+1kxg==",
+      "license": "MIT",
+      "dependencies": {
+        "cross-fetch": "^3.1.5",
+        "fbjs-css-vars": "^1.0.0",
+        "loose-envify": "^1.0.0",
+        "object-assign": "^4.1.0",
+        "promise": "^7.1.1",
+        "setimmediate": "^1.0.5",
+        "ua-parser-js": "^1.0.35"
+      }
+    },
+    "node_modules/fbjs-css-vars": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/fbjs-css-vars/-/fbjs-css-vars-1.0.2.tgz",
+      "integrity": "sha512-b2XGFAFdWZWg0phtAWLHCk836A1Xann+I+Dgd3Gk64MHKZO44FfoD1KxyvbSh0qZsIoXQGGlVztIY+oitJPpRQ==",
+      "license": "MIT"
+    },
+    "node_modules/fbjs/node_modules/promise": {
+      "version": "7.3.1",
+      "resolved": "https://registry.npmjs.org/promise/-/promise-7.3.1.tgz",
+      "integrity": "sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==",
+      "license": "MIT",
+      "dependencies": {
+        "asap": "~2.0.3"
+      }
+    },
     "node_modules/file-entry-cache": {
       "version": "8.0.0",
       "resolved": "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz",
@@ -7860,6 +9920,12 @@
         "node": ">= 14"
       }
     },
+    "node_modules/hyphenate-style-name": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/hyphenate-style-name/-/hyphenate-style-name-1.1.0.tgz",
+      "integrity": "sha512-WDC/ui2VVRrz3jOVi+XtjqkDjiVjTtFaAGiW37k6b+ohyQ5wYDOGkvCZa8+H0nx3gyvv0+BST9xuOgIyGQ00gw==",
+      "license": "BSD-3-Clause"
+    },
     "node_modules/ieee754": {
       "version": "1.2.1",
       "resolved": "https://registry.npmjs.org/ieee754/-/ieee754-1.2.1.tgz",
@@ -7962,6 +10028,15 @@
       "resolved": "https://registry.npmjs.org/ini/-/ini-1.3.8.tgz",
       "integrity": "sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==",
       "license": "ISC"
+    },
+    "node_modules/inline-style-prefixer": {
+      "version": "7.0.1",
+      "resolved": "https://registry.npmjs.org/inline-style-prefixer/-/inline-style-prefixer-7.0.1.tgz",
+      "integrity": "sha512-lhYo5qNTQp3EvSSp3sRvXMbVQTLrvGV6DycRMJ5dm2BLMiJ30wpXKdDdgX+GmJZ5uQMucwRKHamXSst3Sj/Giw==",
+      "license": "MIT",
+      "dependencies": {
+        "css-in-js-utils": "^3.1.0"
+      }
     },
     "node_modules/internal-slot": {
       "version": "1.1.0",
@@ -9842,6 +11917,26 @@
         "url": "https://github.com/sponsors/ljharb"
       }
     },
+    "node_modules/node-fetch": {
+      "version": "2.7.0",
+      "resolved": "https://registry.npmjs.org/node-fetch/-/node-fetch-2.7.0.tgz",
+      "integrity": "sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==",
+      "license": "MIT",
+      "dependencies": {
+        "whatwg-url": "^5.0.0"
+      },
+      "engines": {
+        "node": "4.x || >=6.0.0"
+      },
+      "peerDependencies": {
+        "encoding": "^0.1.0"
+      },
+      "peerDependenciesMeta": {
+        "encoding": {
+          "optional": true
+        }
+      }
+    },
     "node_modules/node-forge": {
       "version": "1.3.3",
       "resolved": "https://registry.npmjs.org/node-forge/-/node-forge-1.3.3.tgz",
@@ -10853,7 +12948,6 @@
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.1.0.tgz",
       "integrity": "sha512-Xs1hdnE+DyKgeHJeJznQmYMIBG3TKIHJJT95Q58nHLSrElKlGQqDTR2HQ9fx5CN/Gk6Vh/kupBTDLU11/nDk/g==",
       "license": "MIT",
-      "peer": true,
       "dependencies": {
         "scheduler": "^0.26.0"
       },
@@ -11339,6 +13433,38 @@
         "react": "*",
         "react-native": "*"
       }
+    },
+    "node_modules/react-native-web": {
+      "version": "0.21.2",
+      "resolved": "https://registry.npmjs.org/react-native-web/-/react-native-web-0.21.2.tgz",
+      "integrity": "sha512-SO2t9/17zM4iEnFvlu2DA9jqNbzNhoUP+AItkoCOyFmDMOhUnBBznBDCYN92fGdfAkfQlWzPoez6+zLxFNsZEg==",
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.18.6",
+        "@react-native/normalize-colors": "^0.74.1",
+        "fbjs": "^3.0.4",
+        "inline-style-prefixer": "^7.0.1",
+        "memoize-one": "^6.0.0",
+        "nullthrows": "^1.1.1",
+        "postcss-value-parser": "^4.2.0",
+        "styleq": "^0.1.3"
+      },
+      "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+      }
+    },
+    "node_modules/react-native-web/node_modules/@react-native/normalize-colors": {
+      "version": "0.74.89",
+      "resolved": "https://registry.npmjs.org/@react-native/normalize-colors/-/normalize-colors-0.74.89.tgz",
+      "integrity": "sha512-qoMMXddVKVhZ8PA1AbUCk83trpd6N+1nF2A6k1i6LsQObyS92fELuk8kU/lQs6M7BsMHwqyLCpQJ1uFgNvIQXg==",
+      "license": "MIT"
+    },
+    "node_modules/react-native-web/node_modules/memoize-one": {
+      "version": "6.0.0",
+      "resolved": "https://registry.npmjs.org/memoize-one/-/memoize-one-6.0.0.tgz",
+      "integrity": "sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==",
+      "license": "MIT"
     },
     "node_modules/react-native-worklets": {
       "version": "0.5.1",
@@ -12085,6 +14211,12 @@
         "node": ">= 0.4"
       }
     },
+    "node_modules/setimmediate": {
+      "version": "1.0.5",
+      "resolved": "https://registry.npmjs.org/setimmediate/-/setimmediate-1.0.5.tgz",
+      "integrity": "sha512-MATJdZp8sLqDl/68LfQmbP8zKPLQNV6BIZoIgrscFDQ+RsvK/BxeDQOgyxKKoh0y/8h3BqVFnCqQ/gd+reiIXA==",
+      "license": "MIT"
+    },
     "node_modules/setprototypeof": {
       "version": "1.2.0",
       "resolved": "https://registry.npmjs.org/setprototypeof/-/setprototypeof-1.2.0.tgz",
@@ -12557,6 +14689,12 @@
       "integrity": "sha512-0MP/Cxx5SzeeZ10p/bZI0S6MpgD+yxAhi1BOQ34jgnMXsCq3j1t6tQnZu+KdlL7dvJTLT3g9xN8tl10TqgFMcg==",
       "license": "MIT"
     },
+    "node_modules/styleq": {
+      "version": "0.1.3",
+      "resolved": "https://registry.npmjs.org/styleq/-/styleq-0.1.3.tgz",
+      "integrity": "sha512-3ZUifmCDCQanjeej1f6kyl/BeP/Vae5EYkQ9iJfUm/QwZvlgnZzyflqAsAWYURdtea8Vkvswu2GrC57h3qffcA==",
+      "license": "MIT"
+    },
     "node_modules/sucrase": {
       "version": "3.35.1",
       "resolved": "https://registry.npmjs.org/sucrase/-/sucrase-3.35.1.tgz",
@@ -12871,6 +15009,12 @@
         "node": ">=0.6"
       }
     },
+    "node_modules/tr46": {
+      "version": "0.0.3",
+      "resolved": "https://registry.npmjs.org/tr46/-/tr46-0.0.3.tgz",
+      "integrity": "sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==",
+      "license": "MIT"
+    },
     "node_modules/ts-api-utils": {
       "version": "2.4.0",
       "resolved": "https://registry.npmjs.org/ts-api-utils/-/ts-api-utils-2.4.0.tgz",
@@ -13043,6 +15187,32 @@
       },
       "engines": {
         "node": ">=14.17"
+      }
+    },
+    "node_modules/ua-parser-js": {
+      "version": "1.0.41",
+      "resolved": "https://registry.npmjs.org/ua-parser-js/-/ua-parser-js-1.0.41.tgz",
+      "integrity": "sha512-LbBDqdIC5s8iROCUjMbW1f5dJQTEFB1+KO9ogbvlb3nm9n4YHa5p4KTvFPWvh2Hs8gZMBuiB1/8+pdfe/tDPug==",
+      "funding": [
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/ua-parser-js"
+        },
+        {
+          "type": "paypal",
+          "url": "https://paypal.me/faisalman"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/faisalman"
+        }
+      ],
+      "license": "MIT",
+      "bin": {
+        "ua-parser-js": "script/cli.js"
+      },
+      "engines": {
+        "node": "*"
       }
     },
     "node_modules/unbox-primitive": {
@@ -13526,11 +15696,27 @@
         "defaults": "^1.0.3"
       }
     },
+    "node_modules/webidl-conversions": {
+      "version": "3.0.1",
+      "resolved": "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz",
+      "integrity": "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==",
+      "license": "BSD-2-Clause"
+    },
     "node_modules/whatwg-fetch": {
       "version": "3.6.20",
       "resolved": "https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.20.tgz",
       "integrity": "sha512-EqhiFU6daOA8kpjOWTL0olhVOF3i7OrFzSYiGsEMB8GcXS+RrzauAERX65xMeNWVqxA6HXH2m69Z9LaKKdisfg==",
       "license": "MIT"
+    },
+    "node_modules/whatwg-url": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-5.0.0.tgz",
+      "integrity": "sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==",
+      "license": "MIT",
+      "dependencies": {
+        "tr46": "~0.0.3",
+        "webidl-conversions": "^3.0.0"
+      }
     },
     "node_modules/whatwg-url-without-unicode": {
       "version": "8.0.0-3",
@@ -13876,3 +16062,518 @@
     }
   }
 }
+
+
+================================================================================
+
+Filename: package.json
+Content:
+{
+  "name": "expo-mobile",
+  "main": "expo-router/entry",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "reset-project": "node ./scripts/reset-project.js",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "expo lint"
+  },
+  "dependencies": {
+    "@expo/metro-config": "^55.0.9",
+    "@expo/vector-icons": "^15.0.3",
+    "@react-navigation/bottom-tabs": "^7.4.0",
+    "@react-navigation/elements": "^2.6.3",
+    "@react-navigation/native": "^7.1.8",
+    "axios": "^1.13.6",
+    "expo": "~54.0.33",
+    "expo-constants": "~18.0.13",
+    "expo-font": "~14.0.11",
+    "expo-haptics": "~15.0.8",
+    "expo-image": "~3.0.11",
+    "expo-linking": "~8.0.11",
+    "expo-router": "~6.0.23",
+    "expo-splash-screen": "~31.0.13",
+    "expo-sqlite": "~16.0.10",
+    "expo-status-bar": "~3.0.9",
+    "expo-symbols": "~1.0.8",
+    "expo-system-ui": "~6.0.9",
+    "expo-web-browser": "~15.0.10",
+    "lucide-react-native": "^0.577.0",
+    "nativewind": "^4.2.3",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-maps": "1.20.1",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-svg": "15.12.1",
+    "react-native-web": "~0.21.0",
+    "react-native-worklets": "0.5.1",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "eslint": "^9.25.0",
+    "eslint-config-expo": "~10.0.0",
+    "tailwindcss": "^3.3.2",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}
+
+
+================================================================================
+
+Filename: postcss.config.js
+Content:
+module.exports = {
+    plugins: {
+        tailwindcss: {},
+    },
+};
+
+
+================================================================================
+
+Filename: scripts/reset-project.js
+Content:
+#!/usr/bin/env node
+
+/**
+ * This script is used to reset the project to a blank state.
+ * It deletes or moves the /app, /components, /hooks, /scripts, and /constants directories to /app-example based on user input and creates a new /app directory with an index.tsx and _layout.tsx file.
+ * You can remove the `reset-project` script from package.json and safely delete this file after running it.
+ */
+
+const fs = require("fs");
+const path = require("path");
+const readline = require("readline");
+
+const root = process.cwd();
+const oldDirs = ["app", "components", "hooks", "constants", "scripts"];
+const exampleDir = "app-example";
+const newAppDir = "app";
+const exampleDirPath = path.join(root, exampleDir);
+
+const indexContent = `import { Text, View } from "react-native";
+
+export default function Index() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>Edit app/index.tsx to edit this screen.</Text>
+    </View>
+  );
+}
+`;
+
+const layoutContent = `import { Stack } from "expo-router";
+
+export default function RootLayout() {
+  return <Stack />;
+}
+`;
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+const moveDirectories = async (userInput) => {
+  try {
+    if (userInput === "y") {
+      // Create the app-example directory
+      await fs.promises.mkdir(exampleDirPath, { recursive: true });
+      console.log(`📁 /${exampleDir} directory created.`);
+    }
+
+    // Move old directories to new app-example directory or delete them
+    for (const dir of oldDirs) {
+      const oldDirPath = path.join(root, dir);
+      if (fs.existsSync(oldDirPath)) {
+        if (userInput === "y") {
+          const newDirPath = path.join(root, exampleDir, dir);
+          await fs.promises.rename(oldDirPath, newDirPath);
+          console.log(`➡️ /${dir} moved to /${exampleDir}/${dir}.`);
+        } else {
+          await fs.promises.rm(oldDirPath, { recursive: true, force: true });
+          console.log(`❌ /${dir} deleted.`);
+        }
+      } else {
+        console.log(`➡️ /${dir} does not exist, skipping.`);
+      }
+    }
+
+    // Create new /app directory
+    const newAppDirPath = path.join(root, newAppDir);
+    await fs.promises.mkdir(newAppDirPath, { recursive: true });
+    console.log("\n📁 New /app directory created.");
+
+    // Create index.tsx
+    const indexPath = path.join(newAppDirPath, "index.tsx");
+    await fs.promises.writeFile(indexPath, indexContent);
+    console.log("📄 app/index.tsx created.");
+
+    // Create _layout.tsx
+    const layoutPath = path.join(newAppDirPath, "_layout.tsx");
+    await fs.promises.writeFile(layoutPath, layoutContent);
+    console.log("📄 app/_layout.tsx created.");
+
+    console.log("\n✅ Project reset complete. Next steps:");
+    console.log(
+      `1. Run \`npx expo start\` to start a development server.\n2. Edit app/index.tsx to edit the main screen.${
+        userInput === "y"
+          ? `\n3. Delete the /${exampleDir} directory when you're done referencing it.`
+          : ""
+      }`
+    );
+  } catch (error) {
+    console.error(`❌ Error during script execution: ${error.message}`);
+  }
+};
+
+rl.question(
+  "Do you want to move existing files to /app-example instead of deleting them? (Y/n): ",
+  (answer) => {
+    const userInput = answer.trim().toLowerCase() || "y";
+    if (userInput === "y" || userInput === "n") {
+      moveDirectories(userInput).finally(() => rl.close());
+    } else {
+      console.log("❌ Invalid input. Please enter 'Y' or 'N'.");
+      rl.close();
+    }
+  }
+);
+
+
+================================================================================
+
+Filename: tailwind.config.js
+Content:
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // NativeWind v4 requires this
+  content: [
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./constants/**/*.{js,jsx,ts,tsx}",
+  ],
+  presets: [require("nativewind/preset")],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#4A9EFF',
+        dark: '#0A0A0F',
+        muted: '#8E8E93',
+      },
+    },
+  },
+  plugins: [],
+};
+
+
+================================================================================
+
+Filename: tsconfig.json
+Content:
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "web-archive"
+  ]
+}
+
+================================================================================
+
+Filename: web-archive/index.html
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/index.html'
+
+
+Filename: web-archive/package.json
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/package.json'
+
+
+Filename: web-archive/postcss.config.mjs
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/postcss.config.mjs'
+
+
+Filename: web-archive/src/app/App.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/App.tsx'
+
+
+Filename: web-archive/src/app/components/AccuracyReport.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/AccuracyReport.tsx'
+
+
+Filename: web-archive/src/app/components/ComparisonView.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ComparisonView.tsx'
+
+
+Filename: web-archive/src/app/components/FlightComplete.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/FlightComplete.tsx'
+
+
+Filename: web-archive/src/app/components/FlightSearch.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/FlightSearch.tsx'
+
+
+Filename: web-archive/src/app/components/LiveMap.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/LiveMap.tsx'
+
+
+Filename: web-archive/src/app/components/PreFlight.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/PreFlight.tsx'
+
+
+Filename: web-archive/src/app/components/figma/ImageWithFallback.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/figma/ImageWithFallback.tsx'
+
+
+Filename: web-archive/src/app/components/ui/accordion.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/accordion.tsx'
+
+
+Filename: web-archive/src/app/components/ui/alert-dialog.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/alert-dialog.tsx'
+
+
+Filename: web-archive/src/app/components/ui/alert.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/alert.tsx'
+
+
+Filename: web-archive/src/app/components/ui/aspect-ratio.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/aspect-ratio.tsx'
+
+
+Filename: web-archive/src/app/components/ui/avatar.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/avatar.tsx'
+
+
+Filename: web-archive/src/app/components/ui/badge.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/badge.tsx'
+
+
+Filename: web-archive/src/app/components/ui/breadcrumb.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/breadcrumb.tsx'
+
+
+Filename: web-archive/src/app/components/ui/button.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/button.tsx'
+
+
+Filename: web-archive/src/app/components/ui/calendar.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/calendar.tsx'
+
+
+Filename: web-archive/src/app/components/ui/card.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/card.tsx'
+
+
+Filename: web-archive/src/app/components/ui/carousel.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/carousel.tsx'
+
+
+Filename: web-archive/src/app/components/ui/chart.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/chart.tsx'
+
+
+Filename: web-archive/src/app/components/ui/checkbox.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/checkbox.tsx'
+
+
+Filename: web-archive/src/app/components/ui/collapsible.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/collapsible.tsx'
+
+
+Filename: web-archive/src/app/components/ui/command.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/command.tsx'
+
+
+Filename: web-archive/src/app/components/ui/context-menu.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/context-menu.tsx'
+
+
+Filename: web-archive/src/app/components/ui/dialog.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/dialog.tsx'
+
+
+Filename: web-archive/src/app/components/ui/drawer.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/drawer.tsx'
+
+
+Filename: web-archive/src/app/components/ui/dropdown-menu.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/dropdown-menu.tsx'
+
+
+Filename: web-archive/src/app/components/ui/form.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/form.tsx'
+
+
+Filename: web-archive/src/app/components/ui/hover-card.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/hover-card.tsx'
+
+
+Filename: web-archive/src/app/components/ui/input-otp.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/input-otp.tsx'
+
+
+Filename: web-archive/src/app/components/ui/input.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/input.tsx'
+
+
+Filename: web-archive/src/app/components/ui/label.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/label.tsx'
+
+
+Filename: web-archive/src/app/components/ui/menubar.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/menubar.tsx'
+
+
+Filename: web-archive/src/app/components/ui/navigation-menu.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/navigation-menu.tsx'
+
+
+Filename: web-archive/src/app/components/ui/pagination.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/pagination.tsx'
+
+
+Filename: web-archive/src/app/components/ui/popover.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/popover.tsx'
+
+
+Filename: web-archive/src/app/components/ui/progress.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/progress.tsx'
+
+
+Filename: web-archive/src/app/components/ui/radio-group.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/radio-group.tsx'
+
+
+Filename: web-archive/src/app/components/ui/resizable.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/resizable.tsx'
+
+
+Filename: web-archive/src/app/components/ui/scroll-area.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/scroll-area.tsx'
+
+
+Filename: web-archive/src/app/components/ui/select.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/select.tsx'
+
+
+Filename: web-archive/src/app/components/ui/separator.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/separator.tsx'
+
+
+Filename: web-archive/src/app/components/ui/sheet.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/sheet.tsx'
+
+
+Filename: web-archive/src/app/components/ui/sidebar.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/sidebar.tsx'
+
+
+Filename: web-archive/src/app/components/ui/skeleton.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/skeleton.tsx'
+
+
+Filename: web-archive/src/app/components/ui/slider.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/slider.tsx'
+
+
+Filename: web-archive/src/app/components/ui/sonner.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/sonner.tsx'
+
+
+Filename: web-archive/src/app/components/ui/switch.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/switch.tsx'
+
+
+Filename: web-archive/src/app/components/ui/table.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/table.tsx'
+
+
+Filename: web-archive/src/app/components/ui/tabs.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/tabs.tsx'
+
+
+Filename: web-archive/src/app/components/ui/textarea.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/textarea.tsx'
+
+
+Filename: web-archive/src/app/components/ui/toggle-group.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/toggle-group.tsx'
+
+
+Filename: web-archive/src/app/components/ui/toggle.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/toggle.tsx'
+
+
+Filename: web-archive/src/app/components/ui/tooltip.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/tooltip.tsx'
+
+
+Filename: web-archive/src/app/components/ui/use-mobile.ts
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/use-mobile.ts'
+
+
+Filename: web-archive/src/app/components/ui/utils.ts
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/components/ui/utils.ts'
+
+
+Filename: web-archive/src/app/routes.ts
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/app/routes.ts'
+
+
+Filename: web-archive/src/imports/pasted_text/flight-screens.md
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/imports/pasted_text/flight-screens.md'
+
+
+Filename: web-archive/src/main.tsx
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/main.tsx'
+
+
+Filename: web-archive/src/styles/fonts.css
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/styles/fonts.css'
+
+
+Filename: web-archive/src/styles/index.css
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/styles/index.css'
+
+
+Filename: web-archive/src/styles/tailwind.css
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/styles/tailwind.css'
+
+
+Filename: web-archive/src/styles/theme.css
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/src/styles/theme.css'
+
+
+Filename: web-archive/vite.config.ts
+Error reading file: [WinError 3] The system cannot find the path specified: '.\\web-archive/vite.config.ts'
+
