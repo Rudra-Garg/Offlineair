@@ -3,6 +3,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 import '../global.css';
+import '../engine/DeadReckoningEngine'; // registers the background task definition
 import { DatabaseProvider } from '../db/DatabaseProvider';
 
 export default function RootLayout() {

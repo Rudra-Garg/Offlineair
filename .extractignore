@@ -42,4 +42,11 @@ app-example
 /ios
 /android
 
+
 repo_contents.txt
+.vscode/
+.extractignore
+.gitignore
+package-lock.json
+docs/
+assets/
