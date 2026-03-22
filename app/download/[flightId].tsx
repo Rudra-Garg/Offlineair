@@ -1,32 +1,20 @@
 /**
  * app/download/[flightId].tsx
- * Pre-flight download screen — wired to the real DataPipeline.
+ * Pre-flight download screen — wired to the real DataPipeline v4.
+ *
+ * The pipeline now resolves origin/destination/aircraft itself via
+ * FlightResolver, so this screen only needs to pass the flight number.
+ * Route label updates once the store has real flight data.
  */
 
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Activity, ArrowLeft, CheckCircle2, Map, Minus, Navigation, Thermometer } from 'lucide-react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 
 import { runDataPipeline } from '../../pipeline/DataPipeline';
-import { airportCoords } from '../../pipeline/airports';
-import { useDownloadProgress } from '../../store';
-
-// ─── Known routes (extend or replace with a flight search API) ────────────────
-
-const ROUTE_LOOKUP: Record<string, { origin: string; destination: string; aircraft?: string }> = {
-  AI101:  { origin: 'VIDP', destination: 'VABB', aircraft: 'B777' },
-  AI102:  { origin: 'VABB', destination: 'VIDP', aircraft: 'B777' },
-  AI191:  { origin: 'VIDP', destination: 'VOMM', aircraft: 'A320' },
-  BA234:  { origin: 'EGLL', destination: 'KJFK', aircraft: 'B747' },
-  EK500:  { origin: 'OMDB', destination: 'VIDP', aircraft: 'A380' },
-};
-
-function resolveRoute(flightNumber: string) {
-  const key = flightNumber.replace(/\s/g, '').toUpperCase();
-  return ROUTE_LOOKUP[key] ?? { origin: 'VIDP', destination: 'VABB' };
-}
+import { useDownloadProgress, useMapViewModel } from '../../store';
 
 // ─── Step metadata ────────────────────────────────────────────────────────────
 
@@ -34,40 +22,37 @@ const STEPS = [
   { label: 'Route & Waypoints', icon: Navigation, key: 'route'   },
   { label: 'Speed Profile',     icon: Activity,   key: 'profile' },
   { label: 'Weather SIGMETs',   icon: Thermometer, key: 'sigmet' },
-  { label: 'Offline Map Tiles', icon: Map,         key: 'tiles'  },
+  { label: 'Landmarks & Cache', icon: Map,         key: 'tiles'  },
 ] as const;
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export default function PreFlightScreen() {
-  const router   = useRouter();
+  const router = useRouter();
   const { flightId } = useLocalSearchParams();
 
-  const idValue  = Array.isArray(flightId) ? flightId[0] : flightId;
-  const rawId    = (idValue ?? 'AI101').replace('%20', '').replace(' ', '');
+  const idValue   = Array.isArray(flightId) ? flightId[0] : flightId;
+  const rawId     = (idValue ?? 'AI101').replace(/\s+/g, '').toUpperCase();
   const displayId = rawId.replace(/([A-Za-z]+)(\d+)/, '$1 $2');
 
-  const progress = useDownloadProgress();
-  const started  = useRef(false);
+  const progress    = useDownloadProgress();
+  const activeFlight = useMapViewModel(s => s.activeFlight);
+  const started     = useRef(false);
 
-  const isReady = progress.status === 'done';
+  const isReady  = progress.status === 'done';
   const hasError = progress.status === 'error';
+
+  // Route label: use real resolved data once available, fall back to flight number
+  const routeLabel = activeFlight
+    ? `${activeFlight.origin} → ${activeFlight.destination}`
+    : '…';
 
   // Kick off pipeline once on mount
   useEffect(() => {
     if (started.current) return;
     started.current = true;
 
-    const route = resolveRoute(rawId);
-    const coords = airportCoords(route.origin, route.destination);
-
-    runDataPipeline({
-      flightNumber: rawId,
-      origin:       route.origin,
-      destination:  route.destination,
-      aircraftType: route.aircraft,
-      ...coords,
-    });
+    runDataPipeline({ flightNumber: rawId });
   }, [rawId]);
 
   const handleReadyToFly = () => {
@@ -75,7 +60,11 @@ export default function PreFlightScreen() {
     router.push(`/live-map/${rawId}`);
   };
 
-  // Convert stepsComplete to a percentage for the ring
+  const handleRetry = () => {
+    started.current = false;
+    runDataPipeline({ flightNumber: rawId });
+  };
+
   const pct = Math.round((progress.stepsComplete / progress.totalSteps) * 100);
 
   return (
@@ -87,15 +76,18 @@ export default function PreFlightScreen() {
           <TouchableOpacity onPress={() => router.back()} style={{ padding: 8, marginLeft: -8 }}>
             <ArrowLeft color="#FFF" size={24} />
           </TouchableOpacity>
-          <Text style={{ flex: 1, textAlign: 'center', color: '#FFFFFF', fontWeight: '600', fontSize: 18, marginRight: 32 }}>
-            {displayId} · {resolveRoute(rawId).origin} → {resolveRoute(rawId).destination}
+          <Text style={{
+            flex: 1, textAlign: 'center',
+            color: '#FFFFFF', fontWeight: '600', fontSize: 18, marginRight: 32,
+          }}>
+            {displayId} · {routeLabel}
           </Text>
         </View>
 
         {/* Progress Ring + Steps */}
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-          {/* Circular Progress */}
+          {/* Circular progress */}
           <View style={{ width: 224, height: 224, marginBottom: 48, alignItems: 'center', justifyContent: 'center' }}>
             <View style={{
               position: 'absolute', width: 224, height: 224, borderRadius: 112,
@@ -118,7 +110,7 @@ export default function PreFlightScreen() {
             </View>
           </View>
 
-          {/* Steps Card */}
+          {/* Steps card */}
           <View style={{
             width: '100%',
             backgroundColor: 'rgba(28,28,46,0.7)',
@@ -126,8 +118,8 @@ export default function PreFlightScreen() {
             borderWidth: 1, borderColor: 'rgba(255,255,255,0.08)',
           }}>
             {STEPS.map((s, i) => {
-              const Icon    = s.icon;
-              const isDone  = i < progress.stepsComplete;
+              const Icon     = s.icon;
+              const isDone   = i < progress.stepsComplete;
               const isActive = progress.step === s.key && !isReady && !hasError;
               return (
                 <View key={s.key} style={{
@@ -167,6 +159,22 @@ export default function PreFlightScreen() {
               {progress.error ?? 'Download failed. Check your connection and try again.'}
             </Text>
           )}
+
+          {/* Resolution source badge */}
+          {isReady && activeFlight && (
+            <View style={{
+              marginTop: 16,
+              paddingHorizontal: 14, paddingVertical: 6,
+              borderRadius: 50,
+              backgroundColor: 'rgba(0,230,118,0.1)',
+              borderWidth: 1, borderColor: 'rgba(0,230,118,0.2)',
+            }}>
+              <Text style={{ color: '#00E676', fontSize: 11, fontWeight: '500' }}>
+                {activeFlight.origin} → {activeFlight.destination}
+                {activeFlight.aircraftType ? ` · ${activeFlight.aircraftType}` : ''}
+              </Text>
+            </View>
+          )}
         </View>
 
         {/* Bottom */}
@@ -179,17 +187,17 @@ export default function PreFlightScreen() {
             }}>
               <Text style={{ color: '#8E8E93', fontSize: 12, fontWeight: '500' }}>
                 {isReady
-                  ? 'All steps complete'
+                  ? 'All steps complete — ready to fly'
                   : hasError
                     ? 'Download failed'
-                    : `Downloading… ${progress.stepsComplete} of ${progress.totalSteps}`}
+                    : `Step ${progress.stepsComplete + 1} of ${progress.totalSteps}`}
               </Text>
             </View>
           </View>
 
           {hasError ? (
             <TouchableOpacity
-              onPress={() => { started.current = false; }}
+              onPress={handleRetry}
               activeOpacity={0.8}
               style={{ backgroundColor: '#4A9EFF', borderRadius: 50, paddingVertical: 16, alignItems: 'center' }}
             >
