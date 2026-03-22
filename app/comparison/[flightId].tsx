@@ -41,7 +41,7 @@ import {
     useEstimatedTrack,
     useMapViewModel,
     useWaypoints,
-} from '../../store';
+} from '@/store';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -109,8 +109,8 @@ function scoreColor(score: number): string {
  * Downsampled to at most maxMarkers for rendering performance.
  */
 function buildDeviationMarkers(
-    estimated: Array<{ timestamp: number; latitude: number; longitude: number }>,
-    actual:    Array<{ timestamp: number; latitude: number; longitude: number }>,
+    estimated: { timestamp: number; latitude: number; longitude: number }[],
+    actual:    { timestamp: number; latitude: number; longitude: number }[],
     maxMarkers = 40,
 ): DeviationMarker[] {
     if (!estimated.length || !actual.length) return [];
@@ -310,9 +310,8 @@ export default function ComparisonScreen() {
                                     {/* Line connecting estimated to actual */}
                                     <Polyline
                                         coordinates={[m.estimated, m.actual]}
-                                        strokeColor={color}
+                                        strokeColor={`${color}66`}
                                         strokeWidth={1}
-                                        strokeOpacity={0.4}
                                     />
                                     {/* Dot on the estimated position */}
                                     <Marker
